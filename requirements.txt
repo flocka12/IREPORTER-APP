@@ -1,0 +1,10 @@
+adium-theme-ubuntu==0.3.4
+astroid==1.4.4
+lazy-object-proxy==1.2.1
+logilab-common==1.1.0
+pycrypto==2.6.1
+pylint==1.5.2
+six==1.10.0
+unity-lens-photos==1.0
+virtualenv==16.1.0
+wrapt==1.8.0
