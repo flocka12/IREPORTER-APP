@@ -23,7 +23,7 @@ incidence = [{
     }
     ]
 
-    
+
 class myRedflags(object):
     def __init__(self):
         self.db = incidence
@@ -44,3 +44,5 @@ class myRedflags(object):
         incidence.append(data)
 
         return incidence
+    def get_Redflags(self):
+        return self.db
