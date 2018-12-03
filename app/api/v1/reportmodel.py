@@ -50,6 +50,7 @@ class myRedflags(object):
         for inc in incidence:
             if id == inc["id"]:
                 return inc
+              
     def delete_RedflagsById(self,id):
         for inc in incidence:
             if id == inc["id"]:
@@ -73,3 +74,4 @@ class myRedflags(object):
             return data
 item= myRedflags()
 print(item.save)
+

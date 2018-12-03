@@ -23,6 +23,7 @@ class MyReports(Resource):
         }
         return make_response(jsonify({
             "My Reports" : success_message
+
         }),201)
     def get(self):
         response = self.items.get_Redflags()
@@ -59,4 +60,5 @@ class Reports(Resource):
         }
         return make_response(jsonify({
             'data':success_message 
+
         }),200)
