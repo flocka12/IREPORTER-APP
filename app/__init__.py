@@ -8,7 +8,7 @@ def appCreate():
     app = Flask(__name__)
     api = Api (app)
 
-    api.add_resource(MyReports,'/GET/red-flags')
-    api.add_resource(Reports,'/GET/<int:RedFlagsid>')
+    api.add_resource(MyReports,'/red-flags')
+    api.add_resource(Reports,'/<int:RedFlagsid>')
 
     return app
