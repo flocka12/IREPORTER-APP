@@ -23,7 +23,6 @@ incidence = [{
     }
     ]
 
-
 class myRedflags(object):
     def __init__(self):
         self.db = incidence
