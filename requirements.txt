@@ -2,7 +2,6 @@ astroid==1.4.4
 lazy-object-proxy==1.2.1
 logilab-common==1.1.0
 pylint==1.5.2
-unity-lens-photos==1.0
 virtualenv==16.1.0
 wrapt==1.8.0
 Click==7.0
