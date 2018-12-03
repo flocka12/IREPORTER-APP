@@ -11,4 +11,5 @@ def appCreate():
     api.add_resource(MyReports,'/GET/red-flags')
     api.add_resource(Reports,'/GET/<int:RedFlagsid>')
 
+
     return app

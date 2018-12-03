@@ -46,10 +46,12 @@ class myRedflags(object):
         return incidence
     def get_Redflags(self):
         return self.db
+
     def get_RedflagsById(self, id):
         for inc in incidence:
             if id == inc["id"]:
                 return inc
+
     def delete_RedflagsById(self,id):
         for inc in incidence:
             if id == inc["id"]:
@@ -68,11 +70,14 @@ class myRedflags(object):
             "Videos" : ['url'],
             "comment" : comment
                 }
+
         for inc in incidence:
             if id == inc["id"]:
                 incidence[id] = data
             return data
+
 item= myRedflags()
 print(item.save)
+
 
 
