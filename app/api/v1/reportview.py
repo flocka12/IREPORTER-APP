@@ -17,8 +17,15 @@ class MyReports(Resource):
         print(data["name"])
 
         response = self.items.save(data["name"], data["flag"], data["location"])
+
+        success_message= {
+            
+            'message':'created a redflag record'
+        }
         return make_response(jsonify({
-            "My Reports" : response
+            "My Reports" : success_message
+
+
         }),201)
     def get(self):
         response = self.items.get_Redflags()
@@ -37,18 +44,26 @@ class Reports(Resource):
             'data':item
 
         }),200)
-        
-        '''response= self.items.get_Redflags()'''
 
 
-    def put(self, RedFlagsid):
+    def patch(self, RedFlagsid):
         data = request.get_json()
-        response = self.items.put_RedflagsById(RedFlagsid,data["name"],data["comment"],data["location"])
-        
-
+        response = self.items.patch_RedflagsById(RedFlagsid,data["name"],data["comment"],data["location"])
+        success_message = {
+            'id' :RedFlagsid,
+            'message':'Updates Red-flag location and comment'
+        }
         return make_response(jsonify({
-            'data':response
+            'data':success_message 
+        }),200)
+    def delete(self, RedFlagsid):
+        item = self.items.delete_RedflagsById(RedFlagsid)
+
+        success_message = {
+            'id' :RedFlagsid,
+            'message':'Red-flag deleted successfully'
+        }
+        return make_response(jsonify({
+            'data':success_message 
 
         }),200)
-
-        
