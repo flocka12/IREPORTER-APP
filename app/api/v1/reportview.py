@@ -42,6 +42,8 @@ class Reports(Resource):
             'data':item
 
         }),200)
+
+
     def patch(self, RedFlagsid):
         data = request.get_json()
         response = self.items.patch_RedflagsById(RedFlagsid,data["name"],data["comment"],data["location"])
@@ -54,6 +56,7 @@ class Reports(Resource):
         }),200)
     def delete(self, RedFlagsid):
         item = self.items.delete_RedflagsById(RedFlagsid)
+
         success_message = {
             'id' :RedFlagsid,
             'message':'Red-flag deleted successfully'

@@ -50,12 +50,12 @@ class myRedflags(object):
         for inc in incidence:
             if id == inc["id"]:
                 return inc
-              
     def delete_RedflagsById(self,id):
         for inc in incidence:
             if id == inc["id"]:
                 incidence.pop(id)
                 return ""
+
     def patch_RedflagsById(self,name,id,location,comment):
         data = {
             "id" : self.id,
@@ -74,4 +74,5 @@ class myRedflags(object):
             return data
 item= myRedflags()
 print(item.save)
+
 
