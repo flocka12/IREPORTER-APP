@@ -17,12 +17,14 @@ class MyReports(Resource):
         print(data["name"])
 
         response = self.items.save(data["name"], data["flag"], data["location"])
+
         success_message= {
             
             'message':'created a redflag record'
         }
         return make_response(jsonify({
             "My Reports" : success_message
+
 
         }),201)
     def get(self):
@@ -64,6 +66,4 @@ class Reports(Resource):
         }
         return make_response(jsonify({
             'data':success_message 
-
-
         }),200)
