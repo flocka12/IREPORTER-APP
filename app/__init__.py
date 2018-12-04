@@ -1,7 +1,9 @@
-from flask import Flask
-from flask_restful import Api
+from flask import Flask,Blueprint
+
+from .api.v1 import version_one as v1
+
 
 def appCreate():
     app = Flask(__name__)
-    api = Api (app)
+    app.register_blueprint(v1)
     return app
