@@ -14,7 +14,7 @@ class UserRegister(Resource):
 
         data = request.get_json()
 
-        try:
+
         response = self.items.save(data["username"], data["email"], data["phonenumber"])
         return make_response(jsonify({
             "My Reports" : response
