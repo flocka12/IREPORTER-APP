@@ -1,7 +1,7 @@
 language: python
 
 python:
- -"3.0"
+ -"2.7.12"
 
 cache: pip    
 install:    
