@@ -5,6 +5,6 @@
 
 ireport app
 
-An application that enables users to fight corruption through filing reports.
+Corruption is big problem especially in third world countries. It is therefore of importance to come up with a way to deal with it hence the introduction to ireport.It is an application that enables users to fight corruption through filing redflags/intervention reports. The users setup an account, naviagate to create their reports and check regularly to keep tabs on their reports
 
 
