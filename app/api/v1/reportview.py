@@ -1,7 +1,7 @@
 import json
 from flask_restful import Resource
 from flask import jsonify,make_response,request
-from reportmodel import incidence, myRedflags
+from app.api.v1.reportmodel import incidence, myRedflags
 
 
 

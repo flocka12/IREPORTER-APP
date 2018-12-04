@@ -1,5 +1,5 @@
-from reportview import MyReports,Reports
-from userview import UserRegister
+from app.api.v1.reportview import MyReports,Reports
+from app.api.v1.userview import UserRegister
 
 from flask_restful import Resource,Api
 from flask import Blueprint
