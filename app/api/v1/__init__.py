@@ -1,4 +1,5 @@
 from reportview import MyReports,Reports
+from userview import UserRegister
 
 from flask_restful import Resource,Api
 from flask import Blueprint
@@ -9,3 +10,4 @@ api = Api(version_one)
 
 api.add_resource(MyReports,'/red_flags')
 api.add_resource(Reports,'/<int:RedFlagsid>')
+api.add_resource(UserRegister,'/Register')
