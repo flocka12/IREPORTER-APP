@@ -15,12 +15,12 @@ class TestEndpoints(unittest.TestCase):
     def test_getallredflags(self):
         self.app = appCreate()
         self.client = self.app.test_client
-        response = self.client().get('/red_flags')
+        response = self.client().get('/api/v1/red_flags')
         self.assertEqual(response.status_code, 200)
     def test_getredflagsbyid(self):
         self.app = appCreate()
         self.client = self.app.test_client
-        response = self.client().post('/<int:RedFlagsid>',data=json.dumps({
+        response = self.client().post('/api/v1/<int:RedFlagsid>',data=json.dumps({
                 
 	            "name": "trim",
 	            "flag": "redflag",
@@ -28,14 +28,14 @@ class TestEndpoints(unittest.TestCase):
 	
 
             }),headers={'content-type': 'application/json'})
-        item = self.client().get('/1')
+        item = self.client().get('api/v1/1')
 
         self.assertEqual(item.status_code, 200)
         
     def test_postnewredflag(self):
         self.app = appCreate()
         self.client = self.app.test_client
-        response = self.client().post('/red_flags',data=json.dumps({
+        response = self.client().post('api/v1/red_flags',data=json.dumps({
                 
 	            "name": "trim",
 	            "flag": "redflag",
@@ -48,14 +48,14 @@ class TestEndpoints(unittest.TestCase):
     def test_deleteredflagbyid(self):
         self.app = appCreate()
         self.client = self.app.test_client
-        response = self.client().delete('/1')
-        item = self.client().get('/1')
+        response = self.client().delete('api/v1/1')
+        item = self.client().get('api/v1/1')
         self.assertEqual(item.status_code,200)
 
     def test_patchbyid(self):
         self.app = appCreate()
         self.client = self.app.test_client
-        response = self.client().patch('/<int:RedFlagsid>',data=json.dumps({
+        response = self.client().patch('api/v1/<int:RedFlagsid>',data=json.dumps({
                 
 	            "name": "trim",
 	            "comment": "holla",
@@ -64,7 +64,7 @@ class TestEndpoints(unittest.TestCase):
 
             }),headers={'content-type': 'application/json'})
 
-        item = self.client().get('/1')
+        item = self.client().get('api/v1/1')
         self.assertEqual(item.status_code,200)
     
 if __name__=='__main__':
