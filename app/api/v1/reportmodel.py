@@ -23,7 +23,7 @@ incidence = [{
     }
     ]
 
-class myRedflags(object):
+class myRedflags():
     def __init__(self):
         self.db = incidence
         self.id = len(incidence) - 1
@@ -71,7 +71,6 @@ class myRedflags(object):
             if id == inc["id"]:
                 incidence[id] = data
             return data
-item= myRedflags()
-print(item.save)
+
 
 

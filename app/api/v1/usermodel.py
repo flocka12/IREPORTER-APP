@@ -9,7 +9,7 @@ User =[{
     'registered' : 'Date',
     'isAdmin' : 'boolean'
 }]
-class UserName(object):
+class UserName():
     def __init__(self):
         self.db = User
         self.id = len(User) - 1
@@ -38,5 +38,3 @@ class UserName(object):
             else:
                 return False, 'user not found'
     
-item= UserName()
-print(item.save)
