@@ -5,6 +5,7 @@ from app.api.v1.reportmodel import incidence, myRedflags
 import datetime
 
 
+
 class MyReports(Resource):
 
     def __init__(self):
@@ -14,8 +15,9 @@ class MyReports(Resource):
     def post (self):
         
         data = request.get_json()
-        if  data["name"] == "" or data["flag"]== "" or data["location"]=="" :
-            if data["name"] == "":
+        
+        if data["name"].strip() == "" or data["flag"].strip() == "" or data["location"].strip() == "" :
+            if data["name"].strip() == "":
                 success_message= {
                 'status':400,
                 'name':'This field cannot be left blank!'
@@ -24,7 +26,7 @@ class MyReports(Resource):
                 "message" : success_message
 
                 }),400)
-            elif data["flag"] == "":
+            elif data["flag"].strip() == "":
                 success_message= {
                 'status':400,
                 'flag':'This field cannot be left blank!'
@@ -42,12 +44,24 @@ class MyReports(Resource):
                 "message" : success_message
 
                 }),400)
+
+        elif data["name"] in ['!','?','@','#','%'] or data["location"] in ['!','?','@','#','%'] or data["flag"] in ['!','?','@','#','%']:
+            success_message= {
+            'status':400,
+            'name':'This field cannot be alphanumeric!'
+            }
+            return make_response(jsonify({
+            "message" : success_message
+
+            }),400)
+
+           
             
         elif type(data["name"])!= str or type(data["flag"])!= str or  type(data["location"])!= str :
             if type(data["name"])!= str:
                 success_message= {
                             'status':400,
-                            "type": "This field cannot be left blank or Bad choice"
+                            "type": "This field cannot be a number"
                             }
                 return make_response(jsonify({
                     "message" : success_message
@@ -102,8 +116,8 @@ class Reports(Resource):
 
     def patch(self, RedFlagsid):
         data = request.get_json()
-        if  data["name"] == "" or data["comment"]== "" or data["location"]=="" :
-            if data["name"] == "":
+        if data["name"].strip() == "" or data["comment"].strip() == "" or data["location"].strip() == "" :
+            if data["name"].strip() == "":
                 success_message= {
                 'status':400,
                 'name':'This field cannot be left blank!'
@@ -112,10 +126,10 @@ class Reports(Resource):
                 "message" : success_message
 
                 }),400)
-            elif data["flag"] == "":
+            elif data["comment"].strip() == "":
                 success_message= {
                 'status':400,
-                'flag':'This field cannot be left blank!'
+                'comment':'This field cannot be left blank!'
                 }
                 return make_response(jsonify({
                 "message" : success_message
@@ -130,11 +144,21 @@ class Reports(Resource):
                 "message" : success_message
 
                 }),400)
+
+        elif data["name"] in ['!','?','@','#','%'] or data["location"] in ['!','?','@','#','%'] or data["comment"] in ['!','?','@','#','%']:
+            success_message= {
+            'status':400,
+            'name':'This field cannot be alphanumeric!'
+            }
+            return make_response(jsonify({
+            "message" : success_message
+
+            }),400)
         elif type(data["name"])!= str or type(data["comment"])!= str or  type(data["location"])!= str :
             if type(data["name"])!= str:
                 success_message= {
                             'status':400,
-                            "type": "This field cannot be left blank or Bad choice"
+                            "type": "This field cannot be a number"
                             }
                 return make_response(jsonify({
                     "message" : success_message
