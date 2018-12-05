@@ -39,9 +39,9 @@ class myRedflags():
                 "Videos" : ['url'],
                 "comment" : 'String'
             }
-
+        
         incidence.append(data)
-
+        
         return incidence
     def get_Redflags(self):
         return self.db
@@ -49,11 +49,15 @@ class myRedflags():
         for inc in incidence:
             if id == inc["id"]:
                 return inc
+            if id != inc["id"]:
+                return "red flag " + str(id) + " does not exist"
     def delete_RedflagsById(self,id):
         for inc in incidence:
             if id == inc["id"]:
                 incidence.pop(id)
                 return ""
+            if id != inc["id"]:
+                return "red flag " + str(id) + " does not exist"
 
     def patch_RedflagsById(self,name,id,location,comment):
         data = {

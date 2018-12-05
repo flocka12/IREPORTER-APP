@@ -3,8 +3,6 @@ from flask_restful import Resource
 from flask import jsonify,make_response,request
 from app.api.v1.reportmodel import incidence, myRedflags
 
-
-
 class MyReports(Resource):
 
     def __init__(self):

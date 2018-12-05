@@ -30,8 +30,8 @@ class UserName():
         User.append(data)
 
         return User
-    
-    def validator(User):
+
+    def validator(self,username):
         for usr in User:
             if usr['username'] == username:
                 return True
