@@ -1,27 +1,5 @@
 import datetime
-incidence = [{
-    "id" : 1,
-    "createdOn" : "11/02/1998",  
-    "createdBy" : 30071294, 
-    "type" : 'redflag',       
-    "location" : 14,   
-    "status" : 'draft',     
-    "Images" : ['url'], 
-    "Videos" : ['url'],
-    "comment" : 'String'
-    },
-    {
-    "id" : 2,
-    "createdOn" : "11/02/1998",  
-    "createdBy" : 24454515, 
-    "type" : 'intervention',       
-    "location" : 14,   
-    "status" : 'resolved',     
-    "Images" : ['url'], 
-    "Videos" : ['url'],
-    "comment" : 'String'
-    }
-    ]
+incidence = []
 
 class myRedflags():
     def __init__(self):
@@ -39,12 +17,16 @@ class myRedflags():
                 "Videos" : ['url'],
                 "comment" : 'String'
             }
-        
+
         incidence.append(data)
         
         return incidence
     def get_Redflags(self):
-        return self.db
+        for inc in incidence:
+            if inc in incidence:
+                return self.db
+            else:
+                return "No redflags"
     def get_RedflagsById(self, id):
         for inc in incidence:
             if id == inc["id"]:
@@ -71,10 +53,13 @@ class myRedflags():
             "Videos" : ['url'],
             "comment" : comment
                 }
-        for inc in incidence:
-            if id == inc["id"]:
-                incidence[id] = data
-            return data
+        if data["comment"] == "":
+            return "no comment added"
+        else:
+            for inc in incidence:
+                if id == inc["id"]:
+                    incidence[id] = data
+                return data
 
 
 
