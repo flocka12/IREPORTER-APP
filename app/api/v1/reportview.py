@@ -10,13 +10,64 @@ class MyReports(Resource):
     def __init__(self):
         self.db = incidence
         self.items = myRedflags()
+        
     def post (self):
         
         data = request.get_json()
         if  data["name"] == "" or data["flag"]== "" or data["location"]=="" :
-            return "no field should be empty"
+            if data["name"] == "":
+                success_message= {
+                'status':400,
+                'name':'This field cannot be left blank!'
+                }
+                return make_response(jsonify({
+                "message" : success_message
+
+                }),400)
+            elif data["flag"] == "":
+                success_message= {
+                'status':400,
+                'flag':'This field cannot be left blank!'
+                }
+                return make_response(jsonify({
+                "message" : success_message
+
+                }),400)
+            else :
+                success_message= {
+                'status':400,
+                'location':'This field cannot be left blank!'
+                }
+                return make_response(jsonify({
+                "message" : success_message
+
+                }),400)
+            
         elif type(data["name"])!= str or type(data["flag"])!= str or  type(data["location"])!= str :
-                return "data type not string"
+            if type(data["name"])!= str:
+                success_message= {
+                            'status':400,
+                            "type": "This field cannot be left blank or Bad choice"
+                            }
+                return make_response(jsonify({
+                    "message" : success_message
+                    }),404)
+            elif type(data["flag"])!= str:
+                success_message= {
+                            'status':400,
+                            "type": "This field cannot be left blank or Bad choice"
+                            }
+                return make_response(jsonify({
+                    "message" : success_message
+                    }),400)
+            else :
+                success_message= {
+                            'status':400,
+                            "type": "This field cannot be left blank or Bad choice"
+                            }
+                return make_response(jsonify({
+                    "type" : success_message
+                }),400)
         else:
             response = self.items.save(data["name"], data["flag"], data["location"])
             success_message= {
@@ -24,14 +75,15 @@ class MyReports(Resource):
             'message':'created a redflag record'
             }
             return make_response(jsonify({
-                "My Reports" : success_message
-
-            }),201)
+                "status":201,
+                "data" : success_message
+                }),201)
             
     def get(self):
         response = self.items.get_Redflags()
         return make_response(jsonify({
-            "My redflags" : response
+            "status":200,
+            "data" : response
         }),200)
 
 class Reports(Resource):
@@ -42,6 +94,7 @@ class Reports(Resource):
         item = self.items.get_RedflagsById(RedFlagsid)
 
         return make_response(jsonify({
+            'status': 200,
             'data':item
 
         }),200)
@@ -50,13 +103,63 @@ class Reports(Resource):
     def patch(self, RedFlagsid):
         data = request.get_json()
         if  data["name"] == "" or data["comment"]== "" or data["location"]=="" :
-            return "no field should be empty"
+            if data["name"] == "":
+                success_message= {
+                'status':400,
+                'name':'This field cannot be left blank!'
+                }
+                return make_response(jsonify({
+                "message" : success_message
+
+                }),400)
+            elif data["flag"] == "":
+                success_message= {
+                'status':400,
+                'flag':'This field cannot be left blank!'
+                }
+                return make_response(jsonify({
+                "message" : success_message
+
+                }),400)
+            else :
+                success_message= {
+                'status':400,
+                'location':'This field cannot be left blank!'
+                }
+                return make_response(jsonify({
+                "message" : success_message
+
+                }),400)
         elif type(data["name"])!= str or type(data["comment"])!= str or  type(data["location"])!= str :
-                return "data type not string"
+            if type(data["name"])!= str:
+                success_message= {
+                            'status':400,
+                            "type": "This field cannot be left blank or Bad choice"
+                            }
+                return make_response(jsonify({
+                    "message" : success_message
+                    }),400)
+            elif type(data["flag"])!= str:
+                success_message= {
+                            'status':400,
+                            "type": "This field cannot be left blank or Bad choice"
+                            }
+                return make_response(jsonify({
+                    "message" : success_message
+                    }),400)
+            else :
+                success_message= {
+                            'status':400,
+                            "type": "This field cannot be left blank or Bad choice"
+                            }
+                return make_response(jsonify({
+                    "type" : success_message
+                }),400)
         else:
             response = self.items.patch_RedflagsById(RedFlagsid,data["name"],data["comment"],data["location"])
     
             success_message = {
+                'status':200,
                 'id' :RedFlagsid,
                 'message':'Updates Red-flag location and comment'
             }
@@ -66,12 +169,11 @@ class Reports(Resource):
     
     def delete(self, RedFlagsid):
         item = self.items.delete_RedflagsById(RedFlagsid)
-
+        
         success_message = {
-            'id' :RedFlagsid,
+            "status":200,
             'message':'Red-flag deleted successfully'
         }
         return make_response(jsonify({
             'data':success_message 
-
-        }),200)
+            }),200)

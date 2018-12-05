@@ -1,25 +1,12 @@
 import datetime
-incidence = [{
-                 "id" : 0,
-                "createdOn" : datetime.datetime.utcnow(),  
-                "createdBy" :"jose", 
-                "type" : "redflag",       
-                "location" : "nairobi",   
-                "status" : 'draft',     
-                "Images" : ['url'], 
-                "Videos" : ['url'],
-                "comment" : 'its exhausting'
-            }
+incidence = [
 
 ]
-
-
-
 
 class myRedflags():
     def __init__(self):
         self.db = incidence
-        self.id = len(incidence) - 1
+        self.id = len(incidence) 
     def save(self,name, flag, location):
         
         data = {
@@ -41,21 +28,18 @@ class myRedflags():
         for inc in incidence:
             if inc in incidence:
                 return self.db
-            else:
-                return "No redflags"
+            
+                
     def get_RedflagsById(self, id):
         for inc in incidence:
             if id == inc["id"]:
                 return inc
-            if id != inc["id"]:
-                return "red flag " + str(id) + " does not exist"
+            
     def delete_RedflagsById(self,id):
         for inc in incidence:
             if id == inc["id"]:
                 incidence.pop(id)
                 return ""
-            if id != inc["id"]:
-                return "red flag " + str(id) + " does not exist"
 
     def patch_RedflagsById(self,name,id,location,comment):
         data = {
