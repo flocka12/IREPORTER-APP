@@ -13,23 +13,24 @@ class UserName():
     def __init__(self):
         self.db = User
         self.id = len(User) - 1
+     
 
-    def save(self,username,email,phonenumber):
-        data = {
-                "id" : self.id,
-                "firstname" : 'string',
-                'lastname': 'string',
-                'othernames': 'string',
-                'email' : email,
-                'phonenumber': phonenumber,
-                'username' : username,
-                'registered' : 'Date',
-                'isAdmin' : 'boolean'
+        def save(self,username,email,phonenumber):
+            data = {
+                    "id" : self.id,
+                    "firstname" : 'string',
+                    'lastname': 'string',
+                    'othernames': 'string',
+                    'email' : email,
+                    'phonenumber': phonenumber,
+                    'username' : username,
+                    'registered' : 'Date',
+                    'isAdmin' : 'boolean'
                     }
 
-        User.append(data)
+            User.append(data)
 
-        return User
+            return User
 
     def validator(self,username):
         for usr in User:
@@ -37,4 +38,5 @@ class UserName():
                 return True
             else:
                 return False, 'user not found'
+
     

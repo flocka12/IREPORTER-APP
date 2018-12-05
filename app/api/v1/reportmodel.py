@@ -1,11 +1,27 @@
 import datetime
-incidence = []
+incidence = [{
+                 "id" : 0,
+                "createdOn" : datetime.datetime.utcnow(),  
+                "createdBy" :"jose", 
+                "type" : "redflag",       
+                "location" : "nairobi",   
+                "status" : 'draft',     
+                "Images" : ['url'], 
+                "Videos" : ['url'],
+                "comment" : 'its exhausting'
+            }
+
+]
+
+
+
 
 class myRedflags():
     def __init__(self):
         self.db = incidence
         self.id = len(incidence) - 1
     def save(self,name, flag, location):
+        
         data = {
                  "id" : self.id,
                 "createdOn" : datetime.datetime.utcnow(),  
@@ -53,13 +69,11 @@ class myRedflags():
             "Videos" : ['url'],
             "comment" : comment
                 }
-        if data["comment"] == "":
-            return "no comment added"
-        else:
-            for inc in incidence:
-                if id == inc["id"]:
-                    incidence[id] = data
-                return data
+
+        for inc in incidence:
+            if id == inc["id"]:
+                incidence[id] = data
+            return data
 
 
 
