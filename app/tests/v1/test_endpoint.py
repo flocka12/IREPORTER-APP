@@ -31,7 +31,7 @@ class TestEndpoints(unittest.TestCase):
         item = self.client().get('api/v1/1')
 
         self.assertEqual(item.status_code, 200)
-        
+    @unittest.skipIf("flag"!="redflag","invalid input" )   
     def test_postnewredflag(self):
         self.app = appCreate()
         self.client = self.app.test_client
