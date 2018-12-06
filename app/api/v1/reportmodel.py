@@ -1,14 +1,12 @@
 import datetime
-incidence = [
 
-]
+incidence = []
 
 class myRedflags():
     def __init__(self):
         self.db = incidence
         self.id = len(incidence) 
     def save(self,name, flag, location):
-        
         data = {
                  "id" : self.id,
                 "createdOn" : datetime.datetime.utcnow(),  
@@ -20,7 +18,7 @@ class myRedflags():
                 "Videos" : ['url'],
                 "comment" : 'String'
             }
-
+        
         incidence.append(data)
         
         return incidence
